@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>kur</title>
+  <style>
+    .unsorted, .sorted {
+      display: inline-block;
+    }
+    .unsorted {
+      width: 45%;
+      margin-right: 3%;
+    }
+    .sorted {
+      width: 45%;
+    }
+    textarea {
+      min-width: 100%;
+      max-width: 100%;
+      min-height: 480px;
+    }
+    .submit {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<form id="checkForm">
+  <div class="unsorted">
+    <label for="unsortedTextarea"><p>Unsorted Check:</p></label>
+    <textarea id="unsortedTextarea" name="unsorted"></textarea>
+  </div>
+  <div class="sorted">
+    <label for="sortedTextarea"><p>Sorted Check:</p></label>
+    <textarea id="sortedTextarea" name="unsorted" placeholder="magic magic"></textarea>
+  </div>
+  <div class="submit">
+    <button id="submit">Perform check</button>
+  </div>
+</form>
+
+<p>If you click the "Submit" button, the form-data will be sent to a page called "/hello.py".</p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$("#checkForm").on("submit", function(e){
+  e.preventDefault();
+  var textForCheck = document.getElementById("unsortedTextarea").value;
+
+  $.post("/check", {data: textForCheck}, function(data) {
+    $("#sortedTextarea").text(data);
+    setTimeout(function() {
+      $.get("/read", function(data) {
+        $("#sortedTextarea").text(data);
+      })
+    }, 10000);
+  });
+});
+</script>
+</body>
+</html>
