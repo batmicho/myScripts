@@ -1,3 +1,3 @@
-sleep 7200
+sleep 3h
 
-pkill firefox 
+killall -9 firefox 
