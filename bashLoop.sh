@@ -10,3 +10,4 @@ do
  cat "$file"
  echo
 done
+
