@@ -6,22 +6,25 @@ rdygz="./logs/*.*.gz";
     echo $logs;
     echo "-----";
     echo $rdygz;
-    echo "----";  
+    echo "--start--";  
 
      for b in $rdygz; 
-         do  
-            prefix="${b//[!1-9]/}"
-            #echo "$prefix" 
-            echo "------"
-            if [ -z $prefix ]; then 
-                 echo $prefix 
-             else
-                 echo "no number"
-             fi
+        do  
+             index="${b//[!1-9]/}"
+             echo "------" 
+             echo "this is index: $index" 
+           
+             if [ "$index" -le '11' ]; then 
+                 sum=$((index + 1)) 
+                echo "this is sum: $sum"
+                echo "this is b: $b"
+                cp  "$b" "${b/\.[0-9]\./\.$sum\.}" 
+            else
+                  echo "no number"
+              fi
          done
     
-#  for i in $logs; do mv $i $i.1 && gzip $i.1 ; done
+    for i in $logs; do mv $i $i.1 && gzip $i.1 ; done
 
-echo "----" ;
+echo "-End-" ;
 
-#    find . -type f -exec rm {} \;
