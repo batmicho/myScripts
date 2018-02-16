@@ -1,2 +1,4 @@
-LogRotate-sh/* linguist-vendored
-simple-tool1/* linguist-vendored
+* linguist-vendored
+*.txt linguist-vendored=false
+*.html linguist-vendored=false
+*.md linguist-vendored=false
