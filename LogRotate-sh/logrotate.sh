@@ -26,5 +26,6 @@ rdygz="./logs/*.*.gz";
     
     for i in $logs; do mv $i $i.1 && gzip $i.1 ; done
 
+
 echo "-End-" ;
 
