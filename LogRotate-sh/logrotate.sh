@@ -8,24 +8,24 @@ rdygz="./logs/*.*.gz";
     echo $rdygz;
     echo "--start--";  
 
-     for b in $rdygz; 
+     for fileName in $rdygz; 
         do  
-             index="${b//[!1-9]/}"
+             index="${fileName//[!1-9]/}"
              echo "------" 
              echo "this is index: $index" 
            
              if [ "$index" -le '11' ]; then 
-                 sum=$((index + 1)) 
-                echo "this is sum: $sum"
-                echo "this is b: $b"
-                cp  "$b" "${b/\.[0-9]\./\.$sum\.}" 
+                 newindex=$((index + 1)) 
+                echo "this is newindex: $newindex"
+                echo "this is fileName: $fileName"
+                cp  "$fileName" "${fileName/\.[0-9]\./\.$newindex\.}" 
+                echo "this is new newFileName: ${fileName/\.[0-9]\./\.$newindex\.}"
             else
                   echo "no number"
               fi
          done
     
-    for i in $logs; do mv $i $i.1 && gzip $i.1 ; done
-
+    for new in $logs; do mv $new $new.1 && gzip $new.1 ; done
 
 echo "-End-" ;
 
