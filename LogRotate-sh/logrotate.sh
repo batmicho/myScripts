@@ -1,14 +1,14 @@
 #!/bin/bash
 
 logs="./logs/*.log";
-rdygz="./logs/*.*.gz";
+rdygz=$(ls -r ./logs/*.*.gz);
     
     echo $logs;
     echo "-----";
     echo $rdygz;
     echo "--start--";  
 
-     for fileName in $rdygz; 
+    for fileName in  $rdygz; 
         do  
              index="${fileName//[!1-9]/}"
              echo "------" 
@@ -18,8 +18,8 @@ rdygz="./logs/*.*.gz";
                  newindex=$((index + 1)) 
                 echo "this is newindex: $newindex"
                 echo "this is fileName: $fileName"
-                cp  "$fileName" "${fileName/\.[0-9]\./\.$newindex\.}" 
-                echo "this is new newFileName: ${fileName/\.[0-9]\./\.$newindex\.}"
+                cp  "$fileName" "${fileName/[0-9]/$newindex}" 
+                echo "this is new newFileName: ${fileName/[0-9]/$newindex}"
             else
                   echo "no number"
               fi
