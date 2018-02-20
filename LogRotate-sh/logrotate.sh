@@ -28,7 +28,7 @@ rdygz=$(ls -r ./logs/*.*.gz);
 			cp "$fileName" "${fileName/[1-9][0-9]/$newindex}"
 			echo "this is newFileName: ${fileName/[1-9][0-9]/$newindex}"
 		else 
-			echo "Not a number from 1 - 12 "
+			echo "Not a number from 1 - 11 "
               fi
          done
     
